@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 首爾家庭溫馨之旅 - 行程規劃平台</title>
+    <meta name="description" content="3大1小盛夏樂天世界與文化避暑行首爾旅遊行程展示網站，專為長輩與小孩設計的計程車版貼心動線。">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Theme Toggle & Header Nav -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <i class="fa-solid fa-plane-departure"></i> <span>AI Travel Agent</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#map-section"><i class="fa-solid fa-map"></i> 地圖</a>
+                <a href="#itinerary-section"><i class="fa-solid fa-calendar-days"></i> 行程</a>
+                <a href="#restaurant-section"><i class="fa-solid fa-utensils"></i> 美食</a>
+                <a href="#guide-section"><i class="fa-solid fa-compass"></i> 指南</a>
+                <a href="#checklist-section"><i class="fa-solid fa-circle-check"></i> 準備</a>
+            </nav>
+            <button id="theme-toggle" class="theme-btn" aria-label="切換深淺色模式">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge-container">
+                <span class="badge"><i class="fa-solid fa-sparkles"></i> 專車接駁 + 計程車版</span>
+            </div>
+            <h1 id="trip-title" class="loading-text">載入行程中...</h1>
+            <p id="trip-subtitle" class="hero-subtitle"></p>
+            <div id="countdown-container" class="countdown-bar">
+                <span class="countdown-label">距離出發還有</span>
+                <span id="countdown-days" class="countdown-num">--</span>
+                <span class="countdown-unit">天</span>
+            </div>
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <i class="fa-solid fa-users"></i>
+                    <div class="stat-info">
+                        <span class="stat-label">出遊成員</span>
+                        <span id="stat-members" class="stat-val">3 大 1 小</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-calendar"></i>
+                    <div class="stat-info">
+                        <span class="stat-label">旅遊天數</span>
+                        <span id="stat-days" class="stat-val">7 天</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fa-solid fa-hotel"></i>
+                    <div class="stat-info">
+                        <span class="stat-label">住宿基地</span>
+                        <span id="stat-accommodation" class="stat-val">鐘路區成大民宿</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="main-container">
+        <!-- Map Section -->
+        <section id="map-section" class="card-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-map-location-dot"></i> 專屬 Google 我的地圖</h2>
+                <p>已匯入 18 個精選景點、餐廳、機場與接駁位置。點擊標記可查看詳細地址與備註。</p>
+            </div>
+            <div class="map-wrapper card-glass">
+                <div class="map-placeholder" id="map-loader">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> 正在載入地圖...
+                </div>
+                <iframe id="google-map-iframe" src="" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="map-actions">
+                <a id="google-map-app-link" href="#" target="_blank" class="btn btn-primary">
+                    <i class="fa-solid fa-location-arrow"></i> 用 Google Maps App 開啟導航
+                </a>
+            </div>
+        </section>
+
+        <!-- Itinerary Section -->
+        <section id="itinerary-section" class="card-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-route"></i> 每日詳細行程時間軸</h2>
+                <p>每日中午均安排 14:00~16:00 避暑午休時段，90% 採用計程車叫車大車，完美照顧長輩體力。</p>
+            </div>
+            
+            <!-- Day Selector Tabs -->
+            <div class="day-tabs-container">
+                <div id="day-tabs" class="day-tabs">
+                    <!-- Dynamic tabs will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div id="timeline" class="timeline-container">
+                <!-- Dynamic timeline content will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Accommodations & Restaurants Section -->
+        <section id="restaurant-section" class="card-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-house-chimney-user"></i> 民宿周邊步行美食 (5-11 分鐘)</h2>
+                <p>成大民宿設有全套大廚房與客廳，下樓即有 CU/GS25 超商。以下為步行可達的健康、不辣/素食友善特色美食：</p>
+            </div>
+            <div id="restaurants-grid" class="restaurants-grid">
+                <!-- Dynamic restaurant cards will be inserted here -->
+            </div>
+        </section>
+
+        <!-- Food & Delivery Guide -->
+        <section id="guide-section" class="card-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-compass"></i> 鍋邊素與小孩不辣飲食生活指引</h2>
+                <p>在首爾吃素與帶不辣小孩用餐的實用小秘訣，以及完全免韓國認證的外送點法。</p>
+            </div>
+            <div class="guide-grid">
+                <div class="guide-card card-glass">
+                    <div class="guide-header">
+                        <i class="fa-solid fa-motorcycle"></i>
+                        <h3>WOWPASS App 內建 K-Delivery (外送) 指南</h3>
+                    </div>
+                    <div class="guide-body">
+                        <ol>
+                            <li>開啟您的 <strong>WOWPASS 官方 App</strong>。</li>
+                            <li>點選首頁的 <strong>「K-Delivery (K-배달)」</strong> 代點外送服務。</li>
+                            <li>介面支援<strong>繁體中文/英文</strong>，可直接瀏覽知名品牌。</li>
+                            <li>可直接使用您的 <strong>WOWPASS 卡片餘額</strong> 扣款支付。</li>
+                            <li>免韓國手機門號、免實名認證，外送員會送達民宿大門。</li>
+                        </ol>
+                        <div class="alert alert-tip">
+                            <strong>備用方案</strong>：下載專為外國人設計的 <strong>Shuttle Delivery App</strong>，支援綁定台灣信用卡（Visa/Mastercard）。
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="guide-card card-glass">
+                    <div class="guide-header">
+                        <i class="fa-solid fa-bowl-food"></i>
+                        <h3>共食與點餐小技巧</h3>
+                    </div>
+                    <div class="guide-body">
+                        <ul>
+                            <li><strong>一隻雞 / 蔘雞湯</strong>：雞湯清淡完全不辣，雞肉分給長輩與小孩；吃素大人可共食高麗人蔘糯米飯、年糕、馬鈴薯與刀削麵。</li>
+                            <li><strong>麵包/三明治 (Isaac Toast)</strong>：步行 2 分鐘即有成大店，可點起司歐姆蛋等無肉蛋奶素口味，完全不辣。</li>
+                            <li><strong>超商即食救急</strong>：民宿巷口 CU/GS25 備有微波白飯、鹽味/昆布三角飯糰、起司條、蒸地瓜與熟雞蛋。</li>
+                            <li><strong>素食外送關鍵字</strong>：
+                                <ul>
+                                    <li>`야채김밥` (蔬菜紫菜包飯)</li>
+                                    <li>`메밀국수` (蕎麥麵)</li>
+                                    <li>`부침개 / 전` (煎餅)</li>
+                                    <li>`두부구이` (烤豆腐)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Checklist Section -->
+        <section id="checklist-section" class="card-section">
+            <div class="section-title">
+                <h2><i class="fa-solid fa-list-check"></i> 行前準備與購物清單</h2>
+                <p>勾選狀態會自動儲存於您的瀏覽器中，全家可同步對齊確認。</p>
+            </div>
+            <div class="checklist-grid">
+                <div class="checklist-card card-glass">
+                    <h3><i class="fa-solid fa-passport"></i> 必須攜帶與待辦事項</h3>
+                    <ul id="todo-list" class="checklist-items">
+                        <!-- Dynamic items -->
+                    </ul>
+                </div>
+                <div class="checklist-card card-glass">
+                    <h3><i class="fa-solid fa-cart-shopping"></i> 樂天超市 & 廣藏市場購物清單</h3>
+                    <ul id="shopping-list" class="checklist-items">
+                        <!-- Dynamic items -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>© 2026 首爾家庭溫馨之旅 🚀 專屬行程規劃平台 | 由 AI 旅行社設計開發</p>
+    </footer>
+
+    <!-- Custom App JS -->
+    <script src="app.js"></script>
+</body>
+</html>

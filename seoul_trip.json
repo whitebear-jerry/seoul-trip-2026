@@ -1,0 +1,346 @@
+{
+  "tripId": "seoul-2026",
+  "title": "2026 首爾家庭溫馨之旅",
+  "subtitle": "3大1小盛夏樂天世界與文化避暑行 (鐘路成大基地計程車版)",
+  "startDate": "2026-07-25",
+  "endDate": "2026-07-31",
+  "coverImage": "https://images.unsplash.com/photo-1517154421773-0529f29ea451?q=80&w=1000",
+  "googleMapIframe": "https://www.google.com/maps/d/embed?mid=1MAg7vexn65urET2p__zWpMKm4xpK7zk",
+  "googleMapAppUrl": "https://www.google.com/maps/d/viewer?mid=1MAg7vexn65urET2p__zWpMKm4xpK7zk",
+  "members": [
+    { "name": "長輩", "notes": "體力有限，安排 90% 計程車接駁，午後需回房休息或在飯店/咖啡廳大廳午休。成大基地使文化行程動線縮短，大幅減輕長輩乘車疲累。" },
+    { "name": "小孩 (6歲)", "notes": "精力充沛不需午睡，但需早睡（20:00-20:30前回房）。不吃辣。安排樂天世界與明洞亂打秀。" },
+    { "name": "鍋邊素大人", "notes": "挑著吃、避肉塊。成大民宿備有大廚房，第一晚與採買後可於廚房自煮，超商食品補給與外送極為發達。" }
+  ],
+  "flights": [
+    {
+      "type": "去程",
+      "airline": "真航空 Jin Air",
+      "flightNo": "LJ73X",
+      "departure": "RMQ (台中 T1) 17:30",
+      "arrival": "ICN (仁川 T2) 21:15",
+      "searchUrl": "https://www.google.com/travel/flights?q=Flights%20from%20RMQ%20to%20ICN%20on%202026-07-25"
+    },
+    {
+      "type": "回程",
+      "airline": "真航空 Jin Air",
+      "flightNo": "LJ73X",
+      "departure": "ICN (仁川 T2) 07:55",
+      "arrival": "RMQ (台中 T1) 09:40",
+      "searchUrl": "https://www.google.com/travel/flights?q=Flights%20from%20ICN%20to%20RMQ%20on%202026-07-31"
+    }
+  ],
+  "transports": {
+    "airportShuttleTpe": "台中市區往返台中清泉崗機場接駁專車 (去程 7/25 14:30，回程 7/31 10:15)",
+    "airportShuttleIcn": "仁川機場 T2 往返成大民宿大樓專車接駁包車 (去程 7/25 22:15，回程 7/31 04:30)",
+    "cityTransport": "90% 計程車接駁 (使用 Kakao T 或 Uber 叫 Venti/Black 大車)"
+  },
+  "accommodations": [
+    {
+      "name": "首爾鐘路區成大民宿 (已定案)",
+      "address": "Sungkyunkwan-ro, Jongno-gu, Seoul (韓國首爾鐘路區成均館路周邊)",
+      "bookingUrl": "",
+      "whyChooseIt": "雙房間獨立公寓，內設大廚房、冰箱與洗脫烘設備，方便素食成員自煮。下樓出巷口即有超商，外送極發達。搭計程車去景福宮、明洞只需 6-10 分鐘，去蠶室樂天世界約 25 分鐘，免去長輩上下地鐵長樓梯。",
+      "priceRange": "約 ₩90,000 - ₩130,000 / 晚"
+    }
+  ],
+  "localRestaurants": [
+    {
+      "name": "혜화칼국수 (惠化手刀削麵)",
+      "distance": "從民宿步行 5 分鐘 (400m)",
+      "type": "傳統牛骨刀削麵、炸魚塊 (不辣)",
+      "whyRecommend": "數十年歷史手刀削麵總統老店。清淡溫和的牛骨湯底，麵條極軟，適合長輩與 6 歲小孩。招牌炸魚塊外酥內嫩、完全不辣，大人小孩都極度喜愛。"
+    },
+    {
+      "name": "소녀방앗간 마로니에점 (少女碾米廠 - 馬羅尼埃公園店)",
+      "distance": "從民宿步行 11 分鐘 (800m)",
+      "type": "健康山菜定食 (不辣、鍋邊素首選)",
+      "whyRecommend": "食材從鄉村直送。招牌「山菜飯」無肉無辣，對素食者極為友善。另外有醬油豬肉拌飯，小孩與不吃素大人也能吃得高興。"
+    },
+    {
+      "name": "정돈 대학로본점 (正豚 - 大學路本店)",
+      "distance": "從民宿步行 10 分鐘 (700m)",
+      "type": "日式熟成炸豬排 (不辣)",
+      "whyRecommend": "首爾排隊前三名的殿堂級日式炸豬排本店。豬排外皮酥脆、肉質極厚多汁且軟嫩，是 6 歲小孩的頂級美味。"
+    }
+  ],
+  "itinerary": [
+    {
+      "day": 1,
+      "date": "2026-07-25",
+      "dayOfWeek": "六",
+      "theme": "抵達首爾與接駁直達成大民宿",
+      "spots": [
+        {
+          "time": "14:30",
+          "name": "台中接駁專車出發",
+          "lat": 24.1477,
+          "lng": 120.6736,
+          "description": "搭乘預約好的接駁專車前往台中清泉崗機場。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "21:15",
+          "name": "仁川國際機場 T2 抵達",
+          "lat": 37.4602,
+          "lng": 126.4407,
+          "description": "降落首爾。出關後於 22:15 搭乘預約好的仁川機場專車接駁包車，直達鐘路成大民宿（深夜車程約 65 分鐘）。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "23:20",
+          "name": "成大民宿 Check-in",
+          "lat": 37.5872,
+          "lng": 126.9930,
+          "description": "入住安頓。成大巷口便利超商（CU/GS25）購買水與隔日早餐等備用物資。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-07-26",
+      "dayOfWeek": "日",
+      "theme": "樂天世界樂園跨區一日遊",
+      "spots": [
+        {
+          "time": "10:00",
+          "name": "樂天世界 Adventure",
+          "lat": 37.5111,
+          "lng": 127.0980,
+          "description": "搭計程車（約 25-30 分鐘，車資約 18,000 韓元）直達蠶室。使用 Discover Seoul Pass 兌換實體票。室內區避暑為主。下午長輩或小孩若疲累，可由一位大人陪同搭計程車先回房午休。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "17:00",
+          "name": "石村湖散步",
+          "lat": 37.5089,
+          "lng": 127.1006,
+          "description": "傍晚氣溫下降，在湖畔散步乘涼，隨後搭計程車回成大民宿（約 25 分鐘）。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "19:30",
+          "name": "回房享用 WOWPASS App 外送",
+          "lat": 37.5872,
+          "lng": 126.9930,
+          "description": "不出門，直接使用 WOWPASS App 內建的「K-Delivery」點外送（有中文介面，可直接用卡片餘額扣款，免韓國手機實名認證），享用蔬菜紫菜包飯、麵食或煎餅等輕鬆放鬆的家庭晚餐。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-07-27",
+      "dayOfWeek": "一",
+      "theme": "蠶室與江南室內避暑：水族館、星空圖書館與樂天塔 (跨區日)",
+      "spots": [
+        {
+          "time": "10:00",
+          "name": "樂天世界水族館",
+          "lat": 37.5132,
+          "lng": 127.1029,
+          "description": "搭計程車直達（約 25 分鐘）。全室內避暑行程，觀賞白鯨、企鵝與水獺。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "14:00",
+          "name": "星空圖書館 (COEX)",
+          "lat": 37.5113,
+          "lng": 127.0598,
+          "description": "搭計程車（約 8 分鐘）。全室內冷氣避暑，欣賞 13 米高巨型書牆並拍照留念。商場內有非常多咖啡廳與休息座椅，方便長輩與小孩在室內舒適午休歇息。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "16:00",
+          "name": "SEOUL SKY 樂天塔 (117F)",
+          "lat": 37.5125,
+          "lng": 127.1025,
+          "description": "搭計程車回到蠶室（約 8 分鐘），挑戰天空步道與玻璃地板，鳥瞰首爾全景。建議預先購票。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "date": "2026-07-28",
+      "dayOfWeek": "二",
+      "theme": "現代百貨避暑與漢江遊船 (景福宮今日公休)",
+      "spots": [
+        {
+          "time": "10:30",
+          "name": "The Hyundai Seoul 現代百貨",
+          "lat": 37.5258,
+          "lng": 126.9285,
+          "description": "搭乘計程車前往（約 20 分鐘）。首爾最大、綠意盎然的室內百貨。美食街有豐富的蔬食與異國料理，適合午餐。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "14:30",
+          "name": "漢江公園休憩",
+          "lat": 37.5283,
+          "lng": 126.9337,
+          "description": "在漢江公園樹蔭草皮下乘涼休息，買飲料外帶甜點野餐，小孩能跑跳放風。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "17:30",
+          "name": "漢江遊覽船 (汝矣島渡口)",
+          "lat": 37.5283,
+          "lng": 126.9337,
+          "description": "搭乘 40 分鐘的遊覽船，買小魚乾餵食海鷗，船身極穩不暈船，對長輩十分輕鬆，小孩非常喜歡。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "date": "2026-07-29",
+      "dayOfWeek": "三",
+      "theme": "傳統文化與市區漫步：景福宮、廣藏市場與益善洞 (地理優勢日)",
+      "spots": [
+        {
+          "time": "09:30",
+          "name": "景福宮",
+          "lat": 37.5796,
+          "lng": 126.9770,
+          "description": "搭計程車前往（車程僅 6 分鐘，3 公里，車資約 5,000 韓元）。租借韓服免費入場，10:00 觀賞守門將交接儀式，避開正午曝曬。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "12:00",
+          "name": "土俗村蔘雞湯 (午餐)",
+          "lat": 37.5766,
+          "lng": 126.9723,
+          "description": "搭計程車 3 分鐘。清湯不辣，雞肉極軟嫩適合長輩小孩；吃素大人可共食高麗人蔘糯米飯與醃蘿蔔。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "14:30",
+          "name": "廣藏市場",
+          "lat": 37.5701,
+          "lng": 126.9999,
+          "description": "搭計程車前往（車程僅 8 分鐘）。品嚐綠豆煎餅（素食友善）、無肉麻藥飯捲。16:30 搭計程車回成大民宿睡午覺休息（車程僅 7 分鐘，避暑午休）。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "18:00",
+          "name": "益善洞韓屋村",
+          "lat": 37.5744,
+          "lng": 126.9897,
+          "description": "傍晚涼爽時，搭計程車僅 5 分鐘（1.8公里）前往益善洞。此處皆為平地，適合長輩慢步。可在韓屋改建的精緻小巷內漫步、拍照，並於特色餐廳或甜點店（如 Mil Toast）享用晚餐或輕食，隨後搭計程車回民宿。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 6,
+      "date": "2026-07-30",
+      "dayOfWeek": "四",
+      "theme": "明洞採買、南山美景與亂打秀大秀",
+      "spots": [
+        {
+          "time": "10:30",
+          "name": "明洞商圈",
+          "lat": 37.5636,
+          "lng": 126.9848,
+          "description": "搭計程車直達（約 10-12 分鐘）。逛美妝與飾品，午餐享用 Egg Drop 歐姆蛋吐司或街邊小吃（如雞蛋糕、草莓大福）。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "13:30",
+          "name": "南山纜車 + N首爾塔",
+          "lat": 37.5512,
+          "lng": 126.9882,
+          "description": "搭計程車至纜車站。搭乘纜車登頂 N首爾塔，在廣場看情人鎖牆與首爾全景，免除長途爬山負擔。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "17:00",
+          "name": "明洞亂打秀 (Myeongdong Nanta Theater)",
+          "lat": 37.5636,
+          "lng": 126.9845,
+          "description": "觀賞 90 分鐘精采的擊鼓喜劇，全室內冷氣充足，無語言限制，老少咸宜，笑聲不斷。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "19:00",
+          "name": "樂天超市 首爾站店",
+          "lat": 37.5574,
+          "lng": 126.9706,
+          "description": "搭計程車至首爾站（約 8 分鐘）。在首爾站樂天超市做最後的伴手禮與水果採買，大廳現場辦理退稅。採買後搭計程車回成大民宿（約 15 分鐘）。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    },
+    {
+      "day": 7,
+      "date": "2026-07-31",
+      "dayOfWeek": "五",
+      "theme": "接駁送機與返程回台",
+      "spots": [
+        {
+          "time": "04:30",
+          "name": "接駁專車出發",
+          "lat": 37.5872,
+          "lng": 126.9930,
+          "description": "辦理退房，搭乘預約好的專車機場接駁車，直達仁川機場 ICN T2（清晨車程約 60 分鐘抵達）。",
+          "cost": "",
+          "googleMapUrl": ""
+        },
+        {
+          "time": "06:00",
+          "name": "仁川國際機場 T2 報到",
+          "lat": 37.4602,
+          "lng": 126.4407,
+          "description": "真航空 LJ73X 辦理登機與行李托運，準備搭機。",
+          "cost": "",
+          "googleMapUrl": ""
+        }
+      ]
+    }
+  ],
+  "preparations": {
+    "mustBring": [
+      "護照（效期6個月以上）",
+      "日幣/韓元現金（超商與小吃備用）",
+      "輕便推車（6歲小孩累時使用，地鐵轉乘多電梯）",
+      "防曬遮陽傘、隨身小電扇（盛夏必備）",
+      "防蚊液、常用藥品"
+    ],
+    "todo": [
+      "填寫 K-ETA 或確認免簽規定",
+      "填寫 Visit Korea Q-Code（檢疫申報）",
+      "購買 eSIM 或實體上網卡",
+      "Klook/KKday 預訂 7/31 04:30 仁川機場至成大民宿的來回送機包車",
+      "預先預訂台中清泉崗機場的來回接駁車",
+      "購買 Discover Seoul Pass 實體卡或電子版",
+      "預先購買明洞亂打秀 17:00 場次、Lotte Tower SEOUL SKY 與南山纜車門票"
+    ]
+  },
+  "shoppingList": [
+    { "item": "零食、泡麵、海帶芽伴手禮", "store": "樂天超市 首爾站店" },
+    { "item": "保養品、彩妝、Egg Drop", "store": "明洞商圈" },
+    { "item": "海苔、特色煎餅小點", "store": "廣藏市場" }
+  ]
+}
