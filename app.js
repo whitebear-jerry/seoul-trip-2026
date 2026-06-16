@@ -237,7 +237,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (block.id === `day-block-${dayNum}`) {
                         block.style.display = 'block';
                         // Smooth scroll to timeline section
-                        document.getElementById('itinerary-section').scrollIntoView        // 6. Render Restaurants (步行美食)
+                        document.getElementById('itinerary-section').scrollIntoView({ behavior: 'smooth' });
+                    } else {
+                        block.style.display = 'none';
+                    }
+                });
+            }
+        }
+
+        // 6. Render Restaurants (步行美食)
         const restaurantsGrid = document.getElementById('restaurants-grid');
         
         // Define some beautiful matching images for local restaurants
@@ -270,7 +278,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     : '';
 
                 let cardHtml = res.orderingCard 
-                    ? `<div class="restaurant-card-word" style="font-size: 0.85em; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6;"><span style="font-weight: 600; color: #1e3a8a;">🗣️ 韓文點餐：</span><code>${res.orderingCard}</code></div>`
+                    ? `<div class="restaurant-card-word" style="font-size: 0.82em; background: rgba(59,130,246,0.06); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6; font-family: monospace; display: flex; justify-content: space-between; align-items: center;"><span><strong>🗣️ 韓文點餐：</strong><code>${res.orderingCard}</code></span></div>`
+                    : '';
+
+                let groupMenuHtml = '';
+                if (res.groupMenu) {
+                    groupMenuHtml = `
+                        <div class="restaurant-group-menu" style="margin-top: 10px; font-size: 0.82em; border-top: 1px dashed rgba(0,0,0,0.12); padding-top: 8px; line-height: 1.45;">
+                            <div style="font-weight: bold; color: #374151; margin-bottom: 5px;"><i class="fa-solid fa-users"></i> 3大1小家庭點餐推薦：</div>
+                            <div style="display: grid; gap: 4px; color: #4b5563;">
+                                <div><span style="color:#059669; font-weight:bold;">🥬 素食大人：</span>${res.groupMenu.vegetarian}</div>
+                                <div><span style="color:#b45309; font-weight:bold;">👴 隨行長輩：</span>${res.groupMenu.senior}</div>
+                                <div><span style="color:#2563eb; font-weight:bold;">👦 6歲小孩：</span>${res.groupMenu.child}</div>
+                                <div><span style="color:#111827; font-weight:bold;">👥 其他大人：</span>${res.groupMenu.adults}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let orderingTipHtml = res.orderingTip
+                    ? `<div style="font-size: 0.8em; color: #dc2626; margin-top: 6px; font-weight: 500; display: flex; align-items: start; gap: 4px;"><i class="fa-solid fa-circle-info" style="margin-top: 2px;"></i> <span><strong>提示：</strong>${res.orderingTip}</span></div>`
                     : '';
 
                 card.innerHTML = `
@@ -280,14 +307,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${vegLabel}
                         </div>
                     </div>
-                    <div class="restaurant-info">
+                    <div class="restaurant-info" style="display: flex; flex-direction: column;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                            <h3 style="margin: 0; font-size:1.15em;">${res.name}</h3>
+                            <h3 style="margin: 0; font-size:1.1em; font-weight:700;">${res.name}</h3>
                             ${ratingHtml}
                         </div>
-                        <span class="restaurant-type"><i class="fa-solid fa-tags"></i> ${res.type}</span>
-                        <p class="restaurant-desc" style="margin-bottom: 8px;">${res.whyRecommend}</p>
+                        <span class="restaurant-type" style="font-size:0.82em; color:#6b7280; margin-bottom: 6px;"><i class="fa-solid fa-tags"></i> ${res.type}</span>
+                        <p class="restaurant-desc" style="margin: 0 0 8px 0; font-size:0.85em; color:#4b5563; line-height:1.4;">${res.whyRecommend}</p>
+                        ${groupMenuHtml}
                         ${cardHtml}
+                        ${orderingTipHtml}
                     </div>
                 `;
                 restaurantsGrid.appendChild(card);
@@ -299,21 +328,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     name: '페르시안궁전 (波斯宮殿咖哩)',
                     distance: '步行 2 分鐘 (成大正門旁)',
                     type: '印度波斯咖哩、烤餅 (素食專區)',
-                    desc: '成大正門旁傳奇咖哩。設有獨立 Vegan 純素烹飪空間與專屬素食菜單，小孩可點甜口椰香咖哩，老少咸宜。',
+                    desc: '成大正門旁傳奇咖哩。設有獨立 Vegan 純素烹飪空間與專屬素食菜單，烤餅與不辣咖哩也極度適合小孩長輩。',
                     image: 'https://images.unsplash.com/photo-1585938338392-50a59970d8ee?q=80&w=600',
                     isVeg: true,
                     rating: '4.1',
-                    orderingCard: '고기 빼고 채식 카레 주세요 (請做去肉素食咖哩)'
+                    orderingCard: '비건 달카레 하나, 버터 난 주세요 (請給一份純素豆子咖哩和奶油烤餅)',
+                    groupMenu: {
+                        vegetarian: "純素豆子咖哩 (Vegan Dhal ₩11,000) 配全素烤餅 (₩3,000)，在純素專用廚房製作，非常安全。",
+                        senior: "黃豆純素咖哩 (₩11,000)，豆泥溫和細緻好入口，配香軟烤餅便於消化。",
+                        child: "起司烤餅 (₩4,500) 濃郁香甜拉絲，搭配椰香甜咖哩雞 (₩14,500，完全不辣) 是小孩最愛。",
+                        adults: "招牌烤全雞咖哩 (₩34,000，可選辣度 2-5 級)，辣手過癮，搭配冰啤酒。"
+                    },
+                    orderingTip: "咖哩可自由調整辣度。小孩與長輩請選 0 級或 1 級（不辣/微甜），其他大人推薦 2 級（中辣）。"
                 },
                 {
                     name: '이삭토스트 서울성대店 (Isaac Toast)',
                     distance: '步行 2 分鐘 (150m)',
                     type: '鐵板熱吐司、咖啡 (早餐/輕食)',
-                    desc: '民宿出門巷口轉角即達。現點現做奶油吐司，起司厚蛋不辣，小孩最愛。吃素成員可去肉點純起司蛋吐司。',
+                    desc: '民宿出門巷口轉角即達。現點現做奶油鐵板吐司，甜奶油口味外酥內軟。吃素成員可去肉點純起司蛋吐司。',
                     image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600',
                     isVeg: true,
                     rating: '4.3',
-                    orderingCard: '치즈 야채 토스트 주세요 (請給起司蔬菜吐司)'
+                    orderingCard: '치즈 야채 토스트 주세요 (請給起司蔬菜吐司)',
+                    groupMenu: {
+                        vegetarian: "起司蔬菜吐司 (₩4,200) - 主動要求去肉去火腿。內含煎蛋、起司與滿滿的高麗菜絲、特調甜醬。",
+                        senior: "薯餅起司吐司 (₩4,500) - 質地較軟易咀嚼，搭配熱紅茶或熱美式咖啡。",
+                        child: "火腿起司蛋吐司 (₩3,800) - 奶油煎吐司香脆偏甜，起司蛋火腿是 6 歲小孩的絕佳早餐。",
+                        adults: "雙重起司薯餅牛肉吐司 (₩5,500) - 大分量雙層起司與厚實牛肉排，口感極佳。"
+                    },
+                    orderingTip: "現點現做通常需等待 5-10 分鐘。若吃素，必須口頭強調「고기 빼주세요 (請去掉肉類)」。"
                 },
                 {
                     name: '핏제리아오 (Pizzeria\' O)',
@@ -323,7 +366,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600',
                     isVeg: true,
                     rating: '4.4',
-                    orderingCard: '마르게리따 피자 안 맵게 주세요 (瑪格麗特披薩請做不辣)'
+                    orderingCard: '마르게리따 피자 안 맵게 주세요 (瑪格麗特披薩請做不辣)',
+                    groupMenu: {
+                        vegetarian: "經典瑪格麗特披薩 (Margherita ₩19,900) - 奶素，九層塔與莫札瑞拉起司，無肉且不含蔥蒜。",
+                        senior: "松露野菇義大利麵 (₩21,000) - 松露香氣濃郁，麵條可要求煮軟一點便於長輩吞嚥。",
+                        child: "起司四重奏披薩 (₩22,000) - 附香甜蜂蜜可以沾著吃，濃濃起司拉絲是孩子最愛。",
+                        adults: "星形招牌披薩 (O'Pizza ₩24,000) - 內含新鮮瑞可塔起司與生火腿，層次豐富。"
+                    },
+                    orderingTip: "長輩若習慣軟麵，點餐時請用韓文交代「파스타 면 부드럽게 해주세요 (麵條請煮軟些)」。"
                 }
             ];
 
@@ -340,7 +390,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     : '';
 
                 let cardHtml = res.orderingCard 
-                    ? `<div class="restaurant-card-word" style="font-size: 0.85em; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6;"><span style="font-weight: 600; color: #1e3a8a;">🗣️ 韓文點餐：</span><code>${res.orderingCard}</code></div>`
+                    ? `<div class="restaurant-card-word" style="font-size: 0.82em; background: rgba(59,130,246,0.06); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6; font-family: monospace; display: flex; justify-content: space-between; align-items: center;"><span><strong>🗣️ 韓文點餐：</strong><code>${res.orderingCard}</code></span></div>`
+                    : '';
+
+                let groupMenuHtml = '';
+                if (res.groupMenu) {
+                    groupMenuHtml = `
+                        <div class="restaurant-group-menu" style="margin-top: 10px; font-size: 0.82em; border-top: 1px dashed rgba(0,0,0,0.12); padding-top: 8px; line-height: 1.45;">
+                            <div style="font-weight: bold; color: #374151; margin-bottom: 5px;"><i class="fa-solid fa-users"></i> 3大1小家庭點餐推薦：</div>
+                            <div style="display: grid; gap: 4px; color: #4b5563;">
+                                <div><span style="color:#059669; font-weight:bold;">🥬 素食大人：</span>${res.groupMenu.vegetarian}</div>
+                                <div><span style="color:#b45309; font-weight:bold;">👴 隨行長輩：</span>${res.groupMenu.senior}</div>
+                                <div><span style="color:#2563eb; font-weight:bold;">👦 6歲小孩：</span>${res.groupMenu.child}</div>
+                                <div><span style="color:#111827; font-weight:bold;">👥 其他大人：</span>${res.groupMenu.adults}</div>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let orderingTipHtml = res.orderingTip
+                    ? `<div style="font-size: 0.8em; color: #dc2626; margin-top: 6px; font-weight: 500; display: flex; align-items: start; gap: 4px;"><i class="fa-solid fa-circle-info" style="margin-top: 2px;"></i> <span><strong>提示：</strong>${res.orderingTip}</span></div>`
                     : '';
 
                 card.innerHTML = `
@@ -350,14 +419,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${vegLabel}
                         </div>
                     </div>
-                    <div class="restaurant-info">
+                    <div class="restaurant-info" style="display: flex; flex-direction: column;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
-                            <h3 style="margin: 0; font-size:1.15em;">${res.name}</h3>
+                            <h3 style="margin: 0; font-size:1.1em; font-weight:700;">${res.name}</h3>
                             ${ratingHtml}
                         </div>
-                        <span class="restaurant-type"><i class="fa-solid fa-tags"></i> ${res.type}</span>
-                        <p class="restaurant-desc" style="margin-bottom: 8px;">${res.desc}</p>
+                        <span class="restaurant-type" style="font-size:0.82em; color:#6b7280; margin-bottom: 6px;"><i class="fa-solid fa-tags"></i> ${res.type}</span>
+                        <p class="restaurant-desc" style="margin: 0 0 8px 0; font-size:0.85em; color:#4b5563; line-height:1.4;">${res.desc}</p>
+                        ${groupMenuHtml}
                         ${cardHtml}
+                        ${orderingTipHtml}
                     </div>
                 `;
                 restaurantsGrid.appendChild(card);
