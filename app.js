@@ -237,22 +237,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (block.id === `day-block-${dayNum}`) {
                         block.style.display = 'block';
                         // Smooth scroll to timeline section
-                        document.getElementById('itinerary-section').scrollIntoView({ behavior: 'smooth' });
-                    } else {
-                        block.style.display = 'none';
-                    }
-                });
-            }
-        }
-
-        // 6. Render Restaurants (步行美食)
+                        document.getElementById('itinerary-section').scrollIntoView        // 6. Render Restaurants (步行美食)
         const restaurantsGrid = document.getElementById('restaurants-grid');
         
         // Define some beautiful matching images for local restaurants
         const restaurantImages = {
             '혜화칼국수 (惠化手刀削麵)': 'https://images.unsplash.com/photo-1612927601601-6638404737ce?q=80&w=600',
             '소녀방앗간 마로니에점 (少女碾米廠 - 馬羅尼埃公園店)': 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=600',
-            '정돈 대학로본점 (正豚 - 大學路本店)': 'https://images.unsplash.com/photo-1598514983318-2f64f7f4796c?q=80&w=600'
+            '정돈 대학로본점 (正豚 - 大學路本店)': 'https://images.unsplash.com/photo-1598514983318-2f64f7f4796c?q=80&w=600',
+            '마지 (Maji 蔬食廟宇飲食)': 'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=600',
+            '익선동 121': 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=600',
+            '순희네빈대떡 (廣藏市場順熙家)': 'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=600'
         };
 
         // If the user's JSON lists the restaurants, render them!
@@ -264,11 +259,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const bgImage = restaurantImages[res.name] || 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=600';
                 
                 let vegLabel = '';
-                if (res.type.includes('素') || res.type.includes('菜') || res.name.includes('소녀방앗간')) {
+                if (res.type.includes('素') || res.type.includes('菜') || res.name.includes('소녀방앗간') || res.name.includes('마지')) {
                     vegLabel = `<span class="restaurant-badge" style="background-color:#059669"><i class="fa-solid fa-leaf"></i> 鍋邊素友善</span>`;
                 } else {
                     vegLabel = `<span class="restaurant-badge" style="background-color:#ea580c"><i class="fa-solid fa-meat"></i> 葷食/小孩愛</span>`;
                 }
+
+                let ratingHtml = res.rating 
+                    ? `<span class="restaurant-rating" style="font-weight:bold; color:#f59e0b; font-size:0.9em;"><i class="fa-solid fa-star"></i> ${res.rating}</span>`
+                    : '';
+
+                let cardHtml = res.orderingCard 
+                    ? `<div class="restaurant-card-word" style="font-size: 0.85em; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6;"><span style="font-weight: 600; color: #1e3a8a;">🗣️ 韓文點餐：</span><code>${res.orderingCard}</code></div>`
+                    : '';
 
                 card.innerHTML = `
                     <div class="restaurant-img" style="background-image: url('${bgImage}')">
@@ -278,9 +281,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="restaurant-info">
-                        <h3>${res.name}</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <h3 style="margin: 0; font-size:1.15em;">${res.name}</h3>
+                            ${ratingHtml}
+                        </div>
                         <span class="restaurant-type"><i class="fa-solid fa-tags"></i> ${res.type}</span>
-                        <p class="restaurant-desc">${res.whyRecommend}</p>
+                        <p class="restaurant-desc" style="margin-bottom: 8px;">${res.whyRecommend}</p>
+                        ${cardHtml}
                     </div>
                 `;
                 restaurantsGrid.appendChild(card);
@@ -290,19 +297,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const extraRestaurants = [
                 {
                     name: '페르시안궁전 (波斯宮殿咖哩)',
-                    distance: '步行 5 分鐘 (350m)',
+                    distance: '步行 2 分鐘 (成大正門旁)',
                     type: '印度波斯咖哩、烤餅 (素食專區)',
-                    desc: '成大正門對面傳奇咖哩。有清楚標記的素食咖哩、豆子咖哩與各式饢餅（Naan），小孩可點甜口椰香咖哩，老少咸宜。',
+                    desc: '成大正門旁傳奇咖哩。設有獨立 Vegan 純素烹飪空間與專屬素食菜單，小孩可點甜口椰香咖哩，老少咸宜。',
                     image: 'https://images.unsplash.com/photo-1585938338392-50a59970d8ee?q=80&w=600',
-                    isVeg: true
+                    isVeg: true,
+                    rating: '4.1',
+                    orderingCard: '고기 빼고 채식 카레 주세요 (請做去肉素食咖哩)'
                 },
                 {
-                    name: '이삭토스트 서울성대점 (Isaac Toast)',
+                    name: '이삭토스트 서울성대店 (Isaac Toast)',
                     distance: '步行 2 分鐘 (150m)',
                     type: '鐵板熱吐司、咖啡 (早餐/輕食)',
-                    desc: '民宿出門巷口轉角即達。現點現做奶油吐司，起司厚蛋不辣，小孩最愛。吃素大人可去肉點純起司蛋吐司。',
+                    desc: '民宿出門巷口轉角即達。現點現做奶油吐司，起司厚蛋不辣，小孩最愛。吃素成員可去肉點純起司蛋吐司。',
                     image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?q=80&w=600',
-                    isVeg: true
+                    isVeg: true,
+                    rating: '4.3',
+                    orderingCard: '치즈 야채 토스트 주세요 (請給起司蔬菜吐司)'
                 },
                 {
                     name: '핏제리아오 (Pizzeria\' O)',
@@ -310,7 +321,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     type: '正統窯烤披薩、義大利麵 (不辣)',
                     desc: '大學路得獎的名人窯烤披薩店。雙層洋房十分寬敞，提供 Margherita 奶素披薩與無肉白醬麵，適合帶長輩小孩在優雅氛圍用餐。',
                     image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=600',
-                    isVeg: true
+                    isVeg: true,
+                    rating: '4.4',
+                    orderingCard: '마르게리따 피자 안 맵게 주세요 (瑪格麗特披薩請做不辣)'
                 }
             ];
 
@@ -322,6 +335,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     ? `<span class="restaurant-badge" style="background-color:#059669"><i class="fa-solid fa-leaf"></i> 鍋邊素友善</span>`
                     : `<span class="restaurant-badge" style="background-color:#ea580c"><i class="fa-solid fa-meat"></i> 葷食/小孩愛</span>`;
 
+                let ratingHtml = res.rating 
+                    ? `<span class="restaurant-rating" style="font-weight:bold; color:#f59e0b; font-size:0.9em;"><i class="fa-solid fa-star"></i> ${res.rating}</span>`
+                    : '';
+
+                let cardHtml = res.orderingCard 
+                    ? `<div class="restaurant-card-word" style="font-size: 0.85em; background: rgba(0,0,0,0.04); padding: 6px 10px; border-radius: 6px; margin-top: 8px; border-left: 3px solid #3b82f6;"><span style="font-weight: 600; color: #1e3a8a;">🗣️ 韓文點餐：</span><code>${res.orderingCard}</code></div>`
+                    : '';
+
                 card.innerHTML = `
                     <div class="restaurant-img" style="background-image: url('${res.image}')">
                         <div class="restaurant-badge-wrap">
@@ -330,9 +351,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <div class="restaurant-info">
-                        <h3>${res.name}</h3>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+                            <h3 style="margin: 0; font-size:1.15em;">${res.name}</h3>
+                            ${ratingHtml}
+                        </div>
                         <span class="restaurant-type"><i class="fa-solid fa-tags"></i> ${res.type}</span>
-                        <p class="restaurant-desc">${res.desc}</p>
+                        <p class="restaurant-desc" style="margin-bottom: 8px;">${res.desc}</p>
+                        ${cardHtml}
                     </div>
                 `;
                 restaurantsGrid.appendChild(card);
